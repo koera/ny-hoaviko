@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,12 @@ class Questionnaire
      * @ORM\Column(name="code", type="string", length=10, nullable=false)
      */
     private $code;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reponse", mappedBy="question")
+     */
+    private $responses;
 
 
     /**
@@ -76,5 +83,46 @@ class Questionnaire
     public function getCode()
     {
         return $this->code;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add response
+     *
+     * @param \AppBundle\Entity\Reponse $response
+     *
+     * @return Questionnaire
+     */
+    public function addResponse(\AppBundle\Entity\Reponse $response)
+    {
+        $this->responses[] = $response;
+
+        return $this;
+    }
+
+    /**
+     * Remove response
+     *
+     * @param \AppBundle\Entity\Reponse $response
+     */
+    public function removeResponse(\AppBundle\Entity\Reponse $response)
+    {
+        $this->responses->removeElement($response);
+    }
+
+    /**
+     * Get responses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getResponses()
+    {
+        return $this->responses;
     }
 }

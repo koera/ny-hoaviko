@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="message">
+        {% if error %}
+            <p class="error text-danger">
+                <i class="fa fa-close"></i> {{ error.messageKey|trans(error.messageData, 'security') }}
+            </p>
+        {% endif %}
+    </div>
+    <form action="{{ path("loginCheck") }}" method="post">
+        <div class="form-group field-group">
+            <div class="input-user input-icon">
+                <input type="text" placeholder="Nom d'utilisateur ou adresse e-mail" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+            </div>
+            <div class="fa-key input-icon">
+                <input type="password" placeholder="mot de passe" id="password" name="_password" required="required" autocomplete="current-password" />
+            </div>
+        </div>
+        <div class="forget-block clearfix">
+            <div class="form-group pull-left">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="remember_me" name="_remember_me"/> Se souvenir de moi
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        {#<div ></div>#}
+        <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="Se connecter" />
+    </form>
+
+{% endblock %}

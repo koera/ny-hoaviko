@@ -30,7 +30,9 @@ class Reponse
 
     /**
      * @var Questionnaire
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Questionnaire")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Questionnaire", inversedBy="question")
+     *
+     * @ORM\JoinColumn(name="question_code", referencedColumnName="code")
      */
     private $question;
 
@@ -82,5 +84,28 @@ class Reponse
     {
         return $this->code;
     }
-}
 
+    /**
+     * Set question
+     *
+     * @param \AppBundle\Entity\Questionnaire $question
+     *
+     * @return Reponse
+     */
+    public function setQuestion(\AppBundle\Entity\Questionnaire $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \AppBundle\Entity\Questionnaire
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+}

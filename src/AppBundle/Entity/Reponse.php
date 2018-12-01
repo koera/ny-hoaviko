@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Questionnaire;
 
 /**
  * Reponse
@@ -30,7 +31,7 @@ class Reponse
 
     /**
      * @var Questionnaire
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Questionnaire")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Questionnaire", inversedBy="question")
      *
      * @ORM\JoinColumn(name="question_code", referencedColumnName="code")
      */

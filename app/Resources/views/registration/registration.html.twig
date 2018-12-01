@@ -1,0 +1,22 @@
+ {% extends 'base.html.twig' %}
+
+ {% block body %}
+
+     {{ form_start(form) }}
+     <div class="form-group field-group">
+         <div class="input-user input-icon">
+             {#<input placeholder="Nom d’utilisateur">#}
+             {{ form_widget(form.username, { 'attr': {'placeholder':'pseudo'} }) }}
+             {{ form_errors(form.username) }}
+         </div>
+         <div class="fa-key input-icon">
+             {{ form_widget(form.password.first, { 'attr': {'placeholder':'Mot de passe'} }) }}
+             {{ form_errors(form.password) }}
+         </div>
+         <div class="fa-key input-icon">
+             {{ form_widget(form.password.second, { 'attr': {'placeholder':'Confirmer mot de passe'} }) }}
+         </div>
+     </div>
+     <button class="btn btn-primary btn-block" type="submit">S'inscrire</button>
+     {{ form_end(form) }}
+ {% endblock %}

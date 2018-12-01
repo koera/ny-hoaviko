@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,6 +30,12 @@ class Questionnaire
      */
     private $code;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reponse", mappedBy="question")
+     */
+    private $responses;
+
 
     /**
      * Set question
@@ -53,5 +60,28 @@ class Questionnaire
     {
         return $this->question;
     }
-}
 
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Questionnaire
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+}
