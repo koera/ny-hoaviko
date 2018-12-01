@@ -3,3 +3,4 @@ vendor
 .git
 composer.lock
 var/sessions/*
+var/cache/*
