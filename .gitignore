@@ -1,6 +1,5 @@
 vendor
-var
 .idea
 .git
 composer.lock
-var/*
+var/sessions/*
