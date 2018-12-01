@@ -1,0 +1,80 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Questionnaire
+ *
+ * @ORM\Table(name="questionnaire")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\QuestionnaireRepository")
+ */
+class Questionnaire
+{
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="question", type="string", length=255, nullable=true)
+     */
+    private $question;
+
+    /**
+     * @var string
+     *
+     * @ORM\Id
+     *
+     * @ORM\Column(name="code", type="string", length=10, nullable=false)
+     */
+    private $code;
+
+
+    /**
+     * Set question
+     *
+     * @param string $question
+     *
+     * @return Questionnaire
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return string
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Questionnaire
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+}
